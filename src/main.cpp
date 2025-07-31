@@ -33,6 +33,7 @@ void setup() {
 
   EEPROM.begin();
   loadCfg();
+  prev=millis();
 }
 
 void initCfg(){
@@ -131,5 +132,22 @@ void saveCfg() {
 }
 
 void loop() {
+  float vL,vR,vB,vS;
+  vL = lcL.get_units(sS);
+  vR = lcR.get_units(sS);
+  vB = lcB.get_units(sS);
+  vS = vL + vR + vB;
 
+  if (isDebug){
+    Serial.print(vL);
+    Serial.print("\t");
+    Serial.print(vR);
+    Serial.print("\t");
+    Serial.print(vB);
+    
+    Serial.print("\t");
+    Serial.print(vS);
+
+    Serial.println();
+  }
 }
