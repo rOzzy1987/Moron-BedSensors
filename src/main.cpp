@@ -22,10 +22,11 @@ void setup() {
   Serial.begin(9600);
   Serial.print("------------\nMoron triple load cell bed sensor\nv1.0.");
   Serial.print(MRNB_VER);
-  Serial.print("n------------\n");
+  Serial.print("\n------------\n");
 
   delay(10000);
   if(Serial.available() == 0){
+    Serial.println("No input, disabling debug mode.");
     Serial.end();
     isDebug = false;
   }
